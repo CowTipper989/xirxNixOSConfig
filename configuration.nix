@@ -18,6 +18,7 @@ in
       ./hardware-configuration.nix
     ];
 
+  # Adds an "unstable" prefix that allows for installation of unstable packages
   nixpkgs.config = {
     packageOverrides = pkgs: {
       unstable = import unstableTarball {
@@ -141,6 +142,7 @@ in
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     htop
+    home-manager
   ];
 
   # Enable flatpak support
