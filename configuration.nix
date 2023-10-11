@@ -4,11 +4,27 @@
 
 { config, pkgs, ... }:
 
+# Enable unstable packages
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+
+  #unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -57,7 +73,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false; # I have it disabled as I won't print from this machine ever
 
   # needed to store VS Code auth token
   services.gnome.gnome-keyring.enable = true;
@@ -107,7 +123,7 @@
       zsh
       qemu
       virt-manager
-      vscode-with-extensions
+      vscode
     #  thunderbird
     ];
   };
@@ -124,6 +140,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    htop
   ];
 
   # Enable flatpak support
