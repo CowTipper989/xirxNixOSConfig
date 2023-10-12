@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 # Enable unstable packages
 let
@@ -16,7 +16,15 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      nixtest = import ../home-manager/home.nix;
+    };
+  };
 
   # Adds an "unstable" prefix that allows for installation of unstable packages
   nixpkgs.config = {
