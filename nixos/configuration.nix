@@ -141,7 +141,7 @@ in
       tailscale
       discord
       telegram-desktop
-      teams
+      teams-for-linux
       obs-studio
       obsidian
       protontricks
