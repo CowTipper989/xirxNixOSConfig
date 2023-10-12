@@ -79,6 +79,18 @@
     enableCompletion = true;
   };
 
+  ###### Theming #######
+  gtk.enable = true;
+  qt.enable = true;
+
+  # QT Theming
+  qt.platformTheme = "gtk";
+  qt.style.name = "adwaita-dark";
+  qt.style.package = pkgs.adwaita-qt;
+
+  # GTK Theming
+  #
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

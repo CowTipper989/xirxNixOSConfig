@@ -136,6 +136,16 @@ in
       qemu
       virt-manager
       vscode
+      vlc
+      p7zip
+      tailscale
+      discord
+      telegram-desktop
+      teams
+      obs-studio
+      obsidian
+      protontricks
+      heroic
     #  thunderbird
     ];
   };
