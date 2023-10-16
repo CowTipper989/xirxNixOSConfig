@@ -159,7 +159,7 @@ in
       elisa
 
       ### Gaming ###
-      unstable.steam
+      steam
       lutris
       mangohud
       unstable.protontricks
@@ -171,7 +171,7 @@ in
       obsidian
 
       ### Social ###
-      unstable.discord
+      discord
       telegram-desktop
     ];
   };
