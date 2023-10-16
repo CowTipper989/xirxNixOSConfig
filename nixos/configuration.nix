@@ -115,6 +115,12 @@ in
     isNormalUser = true;
     description = "nixtest";
     extraGroups = [ "networkmanager" "wheel" ];
+
+    # Set wallpaper
+    shellInit = ''
+      feh --bg-fill "https://raw.githubusercontent.com/CowTipper989/xirxNixOSConfig/master/xirxWP.png"
+    '';
+
     packages = with pkgs; [
       ### System ###
       flatpak
@@ -137,7 +143,7 @@ in
       synergy
       
       ### Development ###
-      unstable.vscode
+      vscode
       git
       gh
       gcc
