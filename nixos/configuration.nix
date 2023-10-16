@@ -162,7 +162,7 @@ in
       steam
       lutris
       mangohud
-      unstable.protontricks
+      protontricks
       heroic
       moonlight-qt
       
