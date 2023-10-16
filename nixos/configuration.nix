@@ -116,43 +116,68 @@ in
     description = "nixtest";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-      kate
-      steam
-      synergy
-      unzip
-      git
-      gimp
-      gnumake
-      nodejs
-      speedtest-cli
-      lutris
-      gh
-      gcc
+      ### System ###
       flatpak
-      gparted
-      mangohud
       zsh
       qemu
-      virt-manager
-      vscode
-      vlc
+      unzip
       p7zip
       tailscale
-      discord
-      telegram-desktop
-      teams-for-linux
+      mullvad-vpn
+
+      ### Utilities ###
+      bitwarden
+      gparted
+      kate
+      konsole
+      yakuake
+      speedtest-cli
+      virt-manager
+      plasma-browser-integration
+      synergy
+      
+      ### Development ###
+      unstable.vscode
+      git
+      gh
+      gcc
+      gnumake
+      nodejs
+
+      ### Media ###
+      firefox
+      vlc
       obs-studio
-      obsidian
-      protontricks
+      gimp
+      okular
+      elisa
+
+      ### Gaming ###
+      unstable.steam
+      lutris
+      mangohud
+      unstable.protontricks
       heroic
-    #  thunderbird
+      moonlight-qt
+      
+      ### Work and School ###
+      teams-for-linux
+      obsidian
+
+      ### Social ###
+      unstable.discord
+      telegram-desktop
     ];
   };
 
+  # Wayland
+  programs.dconf.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+
+
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "nixtest";
+  #services.xserver.displayManager.autoLogin.enable = true;
+  #services.xserver.displayManager.autoLogin.user = "nixtest";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
